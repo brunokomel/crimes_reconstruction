@@ -40,6 +40,18 @@ keep if race == "Black"
 
 gen n_lynch = 1
 
+global southern_fips "01 05 10 12 13 21 22 24 28 37 40 45 47 48 51 54"
+
+* Create a new variable that indicates if state_fips is in the global list
+gen is_southern = 0  // Initialize with 0 (not in list)
+
+foreach val in $southern_fips {
+	di "`val'"
+    replace is_southern = 1 if state_fips2 == "`val'"
+}
+
+keep if is_southern == 1
+
 collapse (sum) n_lynch , by(gisjoin)
 
 save "$wd/lynching_by_county.dta", replace
