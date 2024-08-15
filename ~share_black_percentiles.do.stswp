@@ -1,4 +1,14 @@
-** Crimes Project - Share Black Percentiles
+/*------------------------------------------------------------------------------
+  Project: 		Crimes Project 
+  Start:		08/15/2024
+  
+  This file:	Extracts share black for each from Census and 
+				ranks counties by percentiles
+
+  Sub-do's:		
+				
+
+------------------------------------------------------------------------------*/
 
 clear all
 set more off

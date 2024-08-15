@@ -1,4 +1,13 @@
-** Crimes Project - Bringing all the data together
+/*------------------------------------------------------------------------------
+  Project: 		Crimes Project 
+  Start:		08/15/2024
+  
+  This file:	Brings all clean data together
+
+  Sub-do's:		
+				
+
+------------------------------------------------------------------------------*/
 
 clear all
 set more off

@@ -1,4 +1,13 @@
-** Crimes Project - Extracting Black Policemen, etc. from Census
+/*------------------------------------------------------------------------------
+  Project: 		Crimes Project 
+  Start:		08/15/2024
+  
+  This file:	Extracts Black Policemen, etc. from Census
+
+  Sub-do's:		
+				
+
+------------------------------------------------------------------------------*/
 
 clear all
 set more off
@@ -61,7 +70,7 @@ bysort gisjoin year is_cop2 : gen n_occ2 = sum(n)
 bysort gisjoin year : gen has_black_cop = race == 2
 egen has_black_cop2 = max(has_black_cop), by(gisjoin year)
 
-bysort gisjoin year : gen n_black = maxn_race*(race==2)
+bysort gisjoin year : gen n_black = n_race*(race==2)
 egen n_black_pop = max(n_black), by(gisjoin year)
 rename n_pop total_pop
 
@@ -81,3 +90,19 @@ sort year gisjoin
 
 * Save the final dataset
 save "$wd/black_cops_1870_1880.dta", replace
+
+
+
+foreach y in 1870 1880{
+	preserve 
+	
+	keep if year == `y'
+	
+	save "$wd/black_cops_`y'.dta", replace
+	
+	restore
+}
+
+
+
+

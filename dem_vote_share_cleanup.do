@@ -1,4 +1,14 @@
-** Crimes Project - Cleaning Democratic Vote Share Data
+/*------------------------------------------------------------------------------
+  Project: 		Crimes Project 
+  Start:		08/15/2024
+  
+  This file:	Cleans Democratic Vote Share Data
+
+  Sub-do's:		
+				
+
+------------------------------------------------------------------------------*/
+
 
 clear all
 set more off

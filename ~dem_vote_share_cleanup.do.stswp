@@ -1,4 +1,14 @@
-** Crimes Project - Cleaning Democratic Vote Share Data
+/*------------------------------------------------------------------------------
+  Project: 		Crimes Project 
+  Start:		08/15/2024
+  
+  This file:	Cleans Democratic Vote Share Data
+
+  Sub-do's:		
+				
+
+------------------------------------------------------------------------------*/
+
 
 clear all
 set more off
@@ -148,8 +158,8 @@ foreach var of varlist dem_vote_share* {
  
  gen all_na_vote_share = (dem_vote_share1860 == . & dem_vote_share1864 == . & dem_vote_share1868 == . & dem_vote_share1872 == . & dem_vote_share1876 == . & dem_vote_share1880 == . & dem_vote_share1884 == . & dem_vote_share1888 == . & dem_vote_share1892 == .)
  
- drop if all_na_vote_share == 1
- drop all_na_vote_share
+//  drop if all_na_vote_share == 1
+//  drop all_na_vote_share
  
 * Save the final dataset
 save "$wd/dem_vote_share.dta", replace

@@ -1,4 +1,13 @@
-** Crimes Project - Cleaning Union Soldiers
+/*------------------------------------------------------------------------------
+  Project: 		Crimes Project 
+  Start:		08/15/2024
+  
+  This file:	Cleans Union Soldiers files
+
+  Sub-do's:		
+				
+
+------------------------------------------------------------------------------*/
 
 clear all
 set more off
