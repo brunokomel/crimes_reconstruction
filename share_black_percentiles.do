@@ -1,4 +1,14 @@
-** Crimes Project - Share Black Percentiles
+/*------------------------------------------------------------------------------
+  Project: 		Crimes Project 
+  Start:		08/15/2024
+  
+  This file:	Extracts share black for each from Census and 
+				ranks counties by percentiles
+
+  Sub-do's:		
+				
+
+------------------------------------------------------------------------------*/
 
 clear all
 set more off
@@ -25,11 +35,6 @@ use "$od/IPUMS Extract - 1860-1900 Census.dta", clear
 
 * Filter the data for years greater than 1860 and less than 1900
 keep if year > 1860 & year < 1900
-
-// * Convert statefip, race, and occ1950 to labeled variables
-// encode statefip, gen(state)
-// encode race, gen(race_lab)
-// encode occ1950, gen(occ_lab)
 
 * Remove empty levels
 drop if missing(statefip)
@@ -62,7 +67,7 @@ bysort year: egen share_rank = rank(share_black)
 bysort year: gen n_obs = _N
 bysort year: gen pctle_share_black = share_rank/(n_obs + 1)
 
-keep year gisjoin pctle_share_black
+keep year gisjoin pctle_share_black share_black
 
 foreach y in 1870 1880 {
 
