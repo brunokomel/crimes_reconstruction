@@ -61,7 +61,7 @@ legend(label(1 "% Black, 1870, No Cops 1870") label(2 "% Black, 1880, No Cops 18
 graph export "$results/density_cops_1870.pdf", as(pdf) replace
 
 twoway kdensity share_black if year==1870 & ind_cops1880==0 || kdensity share_black if year==1880 & ind_cops1880==0 || kdensity share_black if year==1870 & ind_cops1880==1 || kdensity share_black if year==1880 & ind_cops1880==1 , ///
-legend(label(1 "% Black, 1870, No Cops 1880") label(2 "% Black, 1880, No Cops 1880")) legend(label(3 "% Black, 1880, With Cops 1880") label(4 "% Black, 1880, With Cops 1880")) ytitle("Density") xtitle("% Black population")
+legend(label(1 "% Black, 1870, No Cops 1880") label(2 "% Black, 1880, No Cops 1880")) legend(label(3 "% Black, 1870, With Cops 1880") label(4 "% Black, 1880, With Cops 1880")) ytitle("Density") xtitle("% Black population")
 graph export "$results/density_cops_1880.pdf", as(pdf) replace
 
 // Democrat Vote Share
@@ -71,7 +71,7 @@ local election_year = "dem_vote_share1860"
 local kern = "epa"
 
 twoway kdensity share_black if year==1870 & `election_year' <= `high_dem', kernel(`kern')  || kdensity share_black if year==1880 & `election_year' <= `high_dem', kernel(`kern')  || kdensity share_black if year==1870 & `election_year' > `high_dem', kernel(`kern')  || kdensity share_black if year==1880 & `election_year' > `high_dem' , kernel(`kern') ///
-legend(label(1 "% Black, 1870, Low Dem") label(2 "% Black, 1880, Low Dem")) legend(label(3 "% Black, 1870, High Dem") label(4 "% Black, 1880, High Dem")) ytitle("Density") xtitle("% Black population")
+legend(label(1 "% Black, 1870, Low Dem 1860") label(2 "% Black, 1880, Low Dem 1860")) legend(label(3 "% Black, 1870, High Dem 1860") label(4 "% Black, 1880, High Dem 1860")) ytitle("Density") xtitle("% Black population")
 
 graph export "$results/density_dem_vote_share_high_1860.pdf", as(pdf) replace
 
@@ -80,7 +80,7 @@ local election_year = "dem_vote_share1872"
 local kern = "epa"
 
 twoway kdensity share_black if year==1870 & `election_year' <= `high_dem' , kernel(`kern')  || kdensity share_black if year==1880 & `election_year' <= `high_dem' , kernel(`kern')  || kdensity share_black if year==1870 & `election_year' > `high_dem' , kernel(`kern') || kdensity share_black if year==1880 & `election_year' > `high_dem' , kernel(`kern')  ///
-legend(label(1 "% Black, 1870, Low Dem") label(2 "% Black, 1880, Low Dem")) legend(label(3 "% Black, 1870, High Dem") label(4 "% Black, 1880, High Dem")) ytitle("Density") xtitle("% Black population")
+legend(label(1 "% Black, 1870, Low Dem 1872") label(2 "% Black, 1880, Low Dem 1872")) legend(label(3 "% Black, 1870, High Dem 1872") label(4 "% Black, 1880, High Dem 1872")) ytitle("Density") xtitle("% Black population")
 
 graph export "$results/density_dem_vote_share_high_1872.pdf", as(pdf) replace
 
@@ -91,7 +91,7 @@ local election_year = "dem_vote_share1860"
 local kern = "epa"
 
 twoway kdensity share_black if year==1870 & `election_year' <= `high_dem', kernel(`kern')  || kdensity share_black if year==1880 & `election_year' <= `high_dem', kernel(`kern')  || kdensity share_black if year==1870 & `election_year' > `high_dem', kernel(`kern')  || kdensity share_black if year==1880 & `election_year' > `high_dem' , kernel(`kern') ///
-legend(label(1 "% Black, 1870, Dem Loss") label(2 "% Black, 1880, Loss")) legend(label(3 "% Black, 1870, Dem Win") label(4 "% Black, 1880, Dem Win")) ytitle("Density") xtitle("% Black population")
+legend(label(1 "% Black, 1870, Dem Loss 1860") label(2 "% Black, 1880, Dem Loss 1860")) legend(label(3 "% Black, 1870, Dem Win 1860") label(4 "% Black, 1880, Dem Win 1860")) ytitle("Density") xtitle("% Black population")
 
 graph export "$results/density_dem_vote_share_win_1860.pdf", as(pdf) replace
 
@@ -100,7 +100,7 @@ local election_year = "dem_vote_share1872"
 local kern = "epa"
 
 twoway kdensity share_black if year==1870 & `election_year' <= `high_dem' , kernel(`kern')  || kdensity share_black if year==1880 & `election_year' <= `high_dem' , kernel(`kern')  || kdensity share_black if year==1870 & `election_year' > `high_dem' , kernel(`kern') || kdensity share_black if year==1880 & `election_year' > `high_dem' , kernel(`kern')  ///
-legend(label(1 "% Black, 1870, Loss") label(2 "% Black, 1880, Loss")) legend(label(3 "% Black, 1870, Dem Win") label(4 "% Black, 1880, Dem Win")) ytitle("Density") xtitle("% Black population")
+legend(label(1 "% Black, 1870, Dem Loss 1872") label(2 "% Black, 1880, Dem Loss 1872")) legend(label(3 "% Black, 1870, Dem Win 1872") label(4 "% Black, 1880, Dem Win 1872")) ytitle("Density") xtitle("% Black population")
 
 graph export "$results/density_dem_vote_share_win_1872.pdf", as(pdf) replace
 
