@@ -90,6 +90,16 @@ reghdfe pctle_share_black ind_troops1870##post,  abs(gisjoin year)
 
 reghdfe pctle_share_black ind_troops1870##ind_cops1870##post,  abs(gisjoin year) // Places that had union troops and black cops in 1870 attracted blacks
 
+sum pctle_share_black, detail
+
+gen dummy = (pctle_share_black > .89)
+
+gen dummy_2 = (pctle_share_black < .1)
+
+reghdfe  dummy ind_troops1870##post,  abs(gisjoin year)
+
+reghdfe  dummy_2 ind_troops1870##post,  abs(gisjoin year)
+
 reghdfe pctle_share_black ind_troops1870##ind_cops1880##post,  abs(gisjoin year) // But it doesn't seem that blakcs necessarily went to places where there were black cops in 1880
 
 gen cum_troops_1870 = cum_troops 
@@ -120,7 +130,7 @@ reghdfe pctle_share_black high_dem##post ,  abs(gisjoin year)
 
 capture drop high_dem
 gen high_dem = 0
-local election_year =  "dem_vote_share1872"
+local election_year =  "dem_vote_share1876"
 local cutoff = 80
 replace high_dem = 1 if `election_year' >= `cutoff'
 
