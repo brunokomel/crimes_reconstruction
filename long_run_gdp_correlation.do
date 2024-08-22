@@ -63,6 +63,62 @@ foreach var in pct_change_black_pop change_share_black change_black_pop_by_chang
 
 
 
+local idy = 1
+
+foreach yvar in personal_income_pc_2000 ln_personal_income_pc_2000 real_gdp_pc_2020 ln_real_gdp_pc_2020{
+	
+	
+	local idx = 1
+	
+	foreach xvar in pct_change_black_pop change_share_black change_black_pop_by_change high_pct_change_black_pop high_change_share_black high_change_black_pop_by_change low_pct_change_black_pop low_change_share_black low_change_black_pop_by_change {
+		
+		
+		eststo r_`idy'_`idx': reghdfe `yvar' `xvar'
+		
+		eststo r_`idy'_`idx'_fe: reghdfe `yvar' `xvar' , abs(state_fips)
+		
+		local idx = `idx' +1 
+		
+	}
+	
+	local idy = `idy' + 1
+	
+	
+}
+
+// legend:
+// r_1_x = personal_income_pc_2000 is the dependent var
+// r_2_x = ln_personal_income_pc_2000 is the dependent var
+// r_3_x = real_gdp_pc_2020 is the dependent var
+// r_4_x = ln_real_gdp_pc_2020 is the dependent var
+
+// r_y_1 = pct_change_black_pop is the explanatory var
+// r_y_2 = change_share_black is the explanatory var
+// r_y_3 = change_black_pop_by_change is the explanatory var
+
+// r_y_4 = high_pct_change_black_pop is the explanatory var
+// r_y_5 = high_change_share_black is the explanatory var
+// r_y_6 = high_change_black_pop_by_change is the explanatory var
+
+// r_y_7 = low_pct_change_black_pop is the explanatory var
+// r_y_8 = low_change_share_black is the explanatory var
+// r_y_9 = low_change_black_pop_by_change is the explanatory var
+
+// r_y_x_fe = adds state FE
+
+// pct_change_black_pop: Percent change in black pop (black_pop_1880 - black_pop_1870)/black_pop_1870 on the RHS
+// change_share_black:  Change in share black pop (share_black_1880 - share_black_1870) on the RHS
+// change_black_pop_by_change: Change in black pop divided by change in pop on the RHS
+
+
+esttab r_2_1 r_2_2 r_2_3 r_2_4 r_2_5 r_2_6 
+
+esttab r_2_1_fe r_2_2_fe r_2_3_fe r_2_4_fe r_2_5_fe r_2_6_fe
+
+esttab r_4_1 r_4_2 r_4_3 r_4_4 r_4_5 r_4_6 
+
+esttab r_4_1_fe r_4_2_fe r_4_3_fe r_4_4_fe r_4_5_fe r_4_6_fe
+
 
 // Percent change in black pop (black_pop_1880 - black_pop_1870)/black_pop_1870 on the RHS
 

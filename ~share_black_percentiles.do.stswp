@@ -116,4 +116,9 @@ gen change_share_black = share_black_1880 - share_black_1870
 gen change_pop = total_pop_1880 - total_pop_1870
 gen change_black_pop_by_change_pop = change_black_pop/change_pop
 
+label var pct_change_black_pop "Percent change in black pop (black_pop_1880 - black_pop_1870)/black_pop_1870"
+label var change_share_black   "Change in share black pop (share_black_1880 - share_black_1870)"
+label var change_black_pop_by_change "Change in black pop divided by change in pop"
+
+
 save "$wd/changes_in_black_pop.dta", replace
