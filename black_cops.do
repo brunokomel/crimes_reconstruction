@@ -30,6 +30,9 @@ global od "$path/Data/Original Data"
 
 global wd "$path/Data/Working Data"
 
+global git "$path/Do Files + R Scripts"
+
+
 
 * Set the data path
 
