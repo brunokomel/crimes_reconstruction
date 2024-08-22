@@ -101,4 +101,9 @@ gen real_gdp_pc_2020 = real_gdp_2020*1000 / population_2020
 
 keep fips real_gdp_pc_2020 personal_income_pc_2000
 
+gen state_fips = substr(fips, 1, 2)
+gen county_fips = substr(fips, 3, 5)
+
+gen gisjoin = "G" + state_fips + "0" + county_fips + "0"
+
 save "$wd/bea_data.dta", replace
