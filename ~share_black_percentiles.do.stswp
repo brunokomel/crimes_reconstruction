@@ -82,6 +82,8 @@ preserve
  keep if _merge == 3
  drop _merge decade
  
+ rename gisjoin_`y' gisjoin
+ 
 * Save the final dataset
 save "$wd/census_share_black_`y'.dta", replace
 
@@ -92,3 +94,26 @@ restore
 
 * Save the final dataset
 save "$wd/census_share_black.dta", replace
+
+// calculating black growth by county
+use  "$wd/census_share_black_1870.dta", clear
+
+foreach var in  num_black total_pop share_black pctle_share_black {
+	rename `var' `var'_1870
+}
+
+merge 1:1 gisjoin using   "$wd/census_share_black_1880.dta"
+
+foreach var in  num_black total_pop share_black pctle_share_black{
+	rename `var' `var'_1880
+}
+
+drop _merge
+
+gen change_black_pop = num_black_1880 - num_black_1870
+gen pct_change_black_pop = change_black_pop/num_black_1870
+gen change_share_black = share_black_1880 - share_black_1870
+gen change_pop = total_pop_1880 - total_pop_1870
+gen change_black_pop_by_change_pop = change_black_pop/change_pop
+
+save "$wd/changes_in_black_pop.dta", replace
