@@ -136,3 +136,4 @@ replace high_dem = 1 if `election_year' >= `cutoff'
 
 reghdfe pctle_share_black high_dem##post ,  abs(gisjoin year)
 
+
